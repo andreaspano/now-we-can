@@ -1,0 +1,18 @@
+name: "Now We Can"
+output_dir: "."
+navbar:
+  title: "Now We Can"
+  left:
+    - text: "Regole"
+      href: regole.html
+    - text: "Membri"
+      href: membri.html
+    - text: "Clan"
+      href: clan.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+  output:
+  html_document:
+    theme: paper
+    css: 'styles.css'
