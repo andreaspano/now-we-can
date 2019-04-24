@@ -1,0 +1,49 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+  
+## Membri del clan 
+    
+
+```{r, echo=FALSE, message = F}
+#https://andreaspano.github.io/now-we-can/
+# rmarkdown::render('./member.Rmd')
+require(rcoc)
+require(dplyr)
+require(kableExtra)
+require(ggplot2)
+# Load  my clan
+my_clan <- load_clan(tag = "#282UJRU28", auth_key = token('~/dev/rcoc/tokens/token-34'))
+```
+
+```{r member table, echo=FALSE, message = F}
+# members
+my_clan_member <-  member(my_clan) %>% 
+  select(name, role, league, trophies) 
+```
+
+```{r batplot, echo=FALSE, message = F}
+pl <- ggplot (my_clan_member) + aes(reorder(name, trophies), trophies, group = name, fill = name) + 
+  geom_bar(stat = 'identity') +
+  xlab('Member') + ylab ('Trophies') +
+  coord_flip() +
+  theme(legend.position = "none") 
+```
+
+
+
+<div class = "row">
+  
+<div class = "col-md-6">
+```{r, message=FALSE, echo=FALSE}
+kable(my_clan_member) %>% kable_styling(bootstrap_options = "striped", full_width = F)
+```
+</div>
+<div class = "col-md-6">
+```{r, message=FALSE, echo=FALSE, fig.width= 5, fig.height= 15}
+pl
+```
+</div>
+</div>
+
