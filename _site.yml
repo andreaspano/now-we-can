@@ -6,7 +6,7 @@ navbar:
     - text: "Regole"
       href: regole.html
     - text: "Membri"
-      href: membri.html
+      href: member.html
     - text: "Clan"
       href: clan.html
   right:
